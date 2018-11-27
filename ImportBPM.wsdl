@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://www.tibco.com/bs3.0/_GFiEUOmlEeiNa-ssr_CQIw/DataToBW" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.tibco.com/bs3.0/_GFiEUOmlEeiNa-ssr_CQIw" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="DataToBW" targetNamespace="http://www.tibco.com/bs3.0/_GFiEUOmlEeiNa-ssr_CQIw/DataToBW">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/bs3.0/_GFiEUOmlEeiNa-ssr_CQIw" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:simpleType name="string">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="string_50">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="SubProcess_RecieveDataFromExtern_ParameterIn_CorrelationID" type="ns0:string"/>
+            <xs:element name="SubProcess_RecieveDataFromExtern_ParameterOut_WF_CASE_ID" type="ns0:string_50"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="SubProcess_RecieveDataFromExtern_ReceiveTask_INPUT">
+        <wsdl:part name="ParameterIn_CorrelationID" element="ns0:SubProcess_RecieveDataFromExtern_ParameterIn_CorrelationID"/>
+    </wsdl:message>
+    <wsdl:message name="SubProcess_RecieveDataFromExtern_ReceiveTask_OUTPUT">
+        <wsdl:part name="ParameterOut_WF_CASE_ID" element="ns0:SubProcess_RecieveDataFromExtern_ParameterOut_WF_CASE_ID"/>
+    </wsdl:message>
+    <wsdl:portType xmlns:ns1="http://www.tibco.com/bs3.2/extensions" name="SubProcess_RecieveDataFromExtern" ns1:FlowContainer="_ayfuAPIpEeiCsd_Wv-RtYQ">
+        <wsdl:operation name="ReceiveTask">
+            <wsdl:input message="tns:SubProcess_RecieveDataFromExtern_ReceiveTask_INPUT" ns1:Event="_cvNSUPIpEeiCsd_Wv-RtYQ"/>
+            <wsdl:output message="tns:SubProcess_RecieveDataFromExtern_ReceiveTask_OUTPUT" ns1:Event="_cvNSUPIpEeiCsd_Wv-RtYQ"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SubProcess_RecieveDataFromExtern_EP" type="tns:SubProcess_RecieveDataFromExtern">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="ReceiveTask">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="ReceiveTask"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="ParameterIn_CorrelationID"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="ParameterOut_WF_CASE_ID"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DataToBW">
+        <wsdl:port name="SubProcess_RecieveDataFromExtern_EP" binding="tns:SubProcess_RecieveDataFromExtern_EP">
+            <soap:address location="http://0.0.0.0:15555/RecieveDataFromExtern"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
